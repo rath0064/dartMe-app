@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Dart Me</title>
+    </head>
+    <body class="themeColor1">
+        <div class="app" id="testsave">
+           
+            <div class="nameOverlay">
+                <div class="nameSection">
+                    <input type="text" maxlength="10" name="name" id="name" placeholder="Enter a name.."/>
+                   <!--  <div class="nameButton cancel"><h1>Cancel</h1></div> -->
+                    <div id="enterName" class="nameButton fire"><h1>Fire!</h1></div>
+                </div>
+            </div>
+            
+
+            <div class="circle menu">
+                <img src="img/menu.png"/>
+            </div>
+
+            <div class="circle refresh">
+                <img src="img/refresh.png"/>
+            </div>
+            
+            <div class="board" id="target">
+            <img class="boardBack" src="img/dartboard-new.svg"/>
+            <div id="enteredName"></div>
+                  <div style="" id="dartContainer"></div>
+            </div>
+            
+            <div id="btnSave"  class="circle uploader">
+                <img src="img/upload.png"/>
+            </div>
+            
+            <div class="circle weapon">
+                <img src="img/dartChoice.png"/>
+            </div>
+            
+            <div class="thrower" id="testMove">
+                <img src="img/dart.png"/>
+            </div>
+
+            <div id="img-out">
+            </div>
+          
+
+            <div class="menuOverlay"></div>
+            <div class="menuSection">
+                <ul>
+                    <li>Menu</li>
+                    <li>Gallery</li>
+                    <li>Help</li>
+                </ul>
+                <div class="themes">
+                    <p>Themes</p>
+                    <div data-color="1" class="theme1 themesIn selectedTheme"></div>
+                    <div data-color="2" class="theme2 themesIn"></div>
+                    <div data-color="3" class="theme3 themesIn"></div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+        <script src="ui/jquery-ui.min.js"></script>
+        <script src="ui/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+        <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/custom.js"></script>
+    </body>
+</html>

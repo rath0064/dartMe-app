@@ -1,0 +1,502 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+   
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+.themeColor1 {
+
+     background-color:#135f68 !important;
+}
+
+.themeColor2 {
+
+    background-color:#ef484c !important;
+}
+
+.themeColor3 {
+
+    background-color: #76c36c !important;
+}
+
+/* Portrait layout (default) */
+.app {
+    width: 85%;
+    height: 100vh;
+    position: relative;
+    padding:0 7.5%;
+    overflow: hidden;
+
+}
+
+.mainLogo, .board {
+    width: 85%;
+    position: absolute;
+    top: 6%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: auto;
+     -webkit-perspective: 500px; /* Chrome, Safari, Opera */
+    perspective: 500px;
+}
+
+.playButton {
+    width: 200px;
+    text-align: center;
+    background: #ef484c;   
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10%; 
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.playButton a {
+    text-decoration: none;
+    color: #fafafa;
+}
+
+.playButton h1 {
+    padding: 12px 0;
+}
+
+/*************************************
+            MAIN SCREEN
+*************************************/
+.board {
+   
+    border-radius: 50%;
+}
+
+.board img {
+    width: 100%;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #33837b;
+    z-index: 96;
+}
+
+.circle img {
+    display: block;
+    margin: 0 auto;
+    margin-top: 12px;
+}
+
+.menu {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    z-index: 102;
+}
+
+.menu img {
+    margin-top: 15px;
+}
+
+.refresh {
+    position: absolute;
+    top: 2%;
+    right: 3%;
+}
+
+.refresh img {
+    width: 50%;
+    margin: 14px 0 0 15px;
+}
+
+.uploader {
+    position: absolute;
+    bottom: 2%;
+    left: 3%;
+}
+
+.weapon {
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+}
+
+
+.thrower, .stuckDart {
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: calc(100% - 100px);
+    width: 20px;
+    height: 100px;
+     -webkit-transform: rotateX(0deg);
+     -webkit-transition: -webkit-transform 0.9s;
+
+}
+
+.moveRotate {
+
+     -webkit-transform: rotateX(60deg);
+
+}
+.stuckDart {
+
+      -webkit-transform: rotateX(50deg);
+    
+
+}
+
+.thrower img, .stuckDart img {
+    width: 100%;
+}
+
+.menuSection {
+    background: #d0d1cf;
+    width: 250px;
+    height: 100%;
+    position: absolute;
+    left: -250px;
+    -webkit-transition: left 0.3s ease-out;
+    -moz-transition: left 0.3s ease-out;
+   transition: left 0.3s ease-out;
+   z-index: 101;
+
+}
+.menuActive{
+
+    left: 0;
+}
+
+.menuSection ul {
+    margin-left: -10px;
+    list-style: none;
+    margin-top: 50px;
+}
+
+.menuSection ul li, .themes p {
+    border-bottom: 2px solid #222;
+    width: 180px;
+    padding: 20px 0 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.themes {
+    position: absolute;
+    bottom: 3%;
+    margin-left: 30px;
+}
+
+.theme1, .theme2, .theme3 {
+    width: 45px;
+    height: 45px;
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.theme1 {
+    background: #135f68;
+}
+
+.theme2 {
+    background: #ef484c;
+}
+
+.theme3 {
+    background: #76c36c;
+}
+
+.selectedTheme {
+    border: 1px solid #222;
+}
+.boardBack {
+
+    opacity: 0.7;
+}
+.helpOverlay, .nameOverlay , .menuOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 5;
+    color: #fafafa;
+    font-size: 1.5em;
+    z-index: 200;
+}
+.menuOverlay {
+
+    z-index: 99;
+    display: none;
+}
+
+.handMenu {
+    position: absolute;
+    left: calc(3% + 40px);
+    top: 2%;
+}
+
+.handPreview {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+}
+
+.handUpload {
+    position: absolute;
+    left: calc(3% + 20px);
+    bottom: calc(3% + 20px);
+}
+
+.handWeapon {
+    position: absolute;
+    right: calc(3% + 20px);
+    bottom: calc(3% + 10px);
+}
+
+.handMenu img, .handPreview img {
+    -ms-transform: rotate(30deg);
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.handMenu p, .handPreview p, .handWeapon p {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.handUpload p {
+    margin: 0 0 0 10px;
+}
+
+.handWeapon p {
+    margin: 0 -2px 0 0;
+}
+
+.nameSection {
+    width: 100%;
+    background: #ef484c;
+    padding: 40px 0 40px;
+    overflow: hidden;
+    margin-top: 35%;
+}
+.nmSectionActive {
+
+    position: absolute;
+    bottom: 0;
+}
+
+#name {
+    width: calc(90% - 100px);
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  margin-left: 4%;
+  padding-left: 3%;
+  outline: none;
+  float: left;
+}
+
+.nameButton {
+    background: pink;
+    width: 100px;
+    margin: 0 auto;
+    padding: 12px 0 12px;
+    text-align: center;
+    float: left;
+}
+
+.cancel {
+    background: #222;
+}
+
+.fire {
+    background: #33837b;
+}
+
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+
+#enteredName {
+
+    width:95%;
+    left:2.5%;
+    font-size: 35px;
+    height: 35px;
+    top:50%;
+    margin-top:-17.5px;
+    color: #FFF;
+    position: absolute;
+    text-align: center;
+    opacity: 0.6;
+    font-weight: bold;
+}
+#title {
+
+    width:95%;
+    left:2.5%;
+    font-size: 35px;
+    height: 35px;
+    bottom:25%;
+    margin-top:-17.5px;
+    color: #FFF;
+    position: absolute;
+    text-align: center;
+    opacity: 0.6;
+    font-weight: bold;
+}
+
+#dartContainer {
+
+    position: absolute; 
+    width:115%; 
+    height:calc(100% + 40px); 
+    left:calc(-7.5% - 5px);
+    top: -60px;
+}
+
+.shake {
+
+    -webkit-animation-name: spaceboots;
+    -webkit-animation-duration: 0.3s;
+    -webkit-transform-origin:50% 50%;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spaceboots;
+    -moz-animation-duration: 0.3s;
+    -moz-transform-origin:50% 50%;
+    -moz-animation-timing-function: linear;
+    animation-name: spaceboots;
+    animation-duration: 0.3s;
+    transform-origin:50% 50%;
+    animation-timing-function: linear;
+}
+
+@-webkit-keyframes spaceboots {
+    0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+    10% { -webkit-transform: translate(-3px, -4px) rotate(-2deg); }
+    20% { -webkit-transform: translate(-6px, 0px) rotate(2deg); }
+    30% { -webkit-transform: translate(0px, 4px) rotate(0deg); }
+    40% { -webkit-transform: translate(3px, -5px) rotate(2deg); }
+    50% { -webkit-transform: translate(-6px, 3px) rotate(-2deg); }
+    60% { -webkit-transform: translate(-5px, 3px) rotate(0deg); }
+    70% { -webkit-transform: translate(4px, 3px) rotate(-2deg); }
+    80% { -webkit-transform: translate(-3px, -4px) rotate(2deg); }
+    90% { -webkit-transform: translate(5px, 2px) rotate(0deg); }
+    100% { -webkit-transform: translate(1px, -2px) rotate(-2deg); }
+}
+
+@-moz-keyframes spaceboots {
+     0% { -moz-transform: translate(2px, 1px) rotate(0deg); }
+    10% { -moz-transform: translate(-3px, -4px) rotate(-2deg); }
+    20% { -moz-transform: translate(-6px, 0px) rotate(2deg); }
+    30% { -moz-transform: translate(0px, 4px) rotate(0deg); }
+    40% { -moz-transform: translate(3px, -5px) rotate(2deg); }
+    50% { -moz-transform: translate(-6px, 3px) rotate(-2deg); }
+    60% { -moz-transform: translate(-5px, 3px) rotate(0deg); }
+    70% { -moz-transform: translate(4px, 3px) rotate(-2deg); }
+    80% { -moz-transform: translate(-3px, -4px) rotate(2deg); }
+    90% { -moz-transform: translate(5px, 2px) rotate(0deg); }
+    100% { -moz-transform: translate(1px, -2px) rotate(-2deg); }
+}
+
+@keyframes spaceboots {
+ 0% { transform: translate(2px, 1px) rotate(0deg); }
+    10% { transform: translate(-3px, -4px) rotate(-2deg); }
+    20% { transform: translate(-6px, 0px) rotate(2deg); }
+    30% { transform: translate(0px, 4px) rotate(0deg); }
+    40% { transform: translate(3px, -5px) rotate(2deg); }
+    50% { transform: translate(-6px, 3px) rotate(-2deg); }
+    60% { transform: translate(-5px, 3px) rotate(0deg); }
+    70% { transform: translate(4px, 3px) rotate(-2deg); }
+    80% { transform: translate(-3px, -4px) rotate(2deg); }
+    90% { transform: translate(5px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-2deg); }
+
+.shake {
+    display:inline-block
+}
